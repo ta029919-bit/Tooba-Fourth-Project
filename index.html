@@ -249,6 +249,9 @@
             box-shadow: 0 5px 15px var(--shadow-color);
             transition: var(--transition);
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .menu-card:hover {
@@ -263,6 +266,10 @@
 
         .menu-info {
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .menu-info h3 {
@@ -273,6 +280,21 @@
 
         .menu-price {
             color: var(--primary-color);
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .read-more-btn:hover {
+            gap: 10px;
         }
 
         /* ===================================
@@ -652,71 +674,101 @@
             <div class="menu-card" data-key="margherita pizza" data-name="margherita pizza">
                 <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=500&q=80" alt="Pizza">
                 <div class="menu-info">
-                    <h3>Margherita Pizza <span class="menu-price">Rs. 1,600</span></h3>
-                    <p>Fresh tomatoes, mozzarella, basil, and olive oil.</p>
+                    <div>
+                        <h3>Margherita Pizza <span class="menu-price">Rs. 1,600</span></h3>
+                        <p>Fresh tomatoes, mozzarella, basil, and olive oil.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="menu-card" data-key="gourmet burger" data-name="gourmet burger">
                 <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" alt="Burger">
                 <div class="menu-info">
-                    <h3>Gourmet Burger <span class="menu-price">Rs. 1,850</span></h3>
-                    <p>Juicy beef patty with cheddar, lettuce, and secret sauce.</p>
+                    <div>
+                        <h3>Gourmet Burger <span class="menu-price">Rs. 1,850</span></h3>
+                        <p>Juicy beef patty with cheddar, lettuce, and secret sauce.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="menu-card" data-key="pasta carbonara" data-name="creamy pasta carbonara">
                 <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=500&q=80" alt="Pasta">
                 <div class="menu-info">
-                    <h3>Pasta Carbonara <span class="menu-price">Rs. 1,700</span></h3>
-                    <p>Rich creamy sauce, parmesan, pancetta, and black pepper.</p>
+                    <div>
+                        <h3>Pasta Carbonara <span class="menu-price">Rs. 1,700</span></h3>
+                        <p>Rich creamy sauce, parmesan, pancetta, and black pepper.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="menu-card" data-key="grilled salmon" data-name="grilled salmon text">
                 <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80" alt="Salmon">
                 <div class="menu-info">
-                    <h3>Grilled Salmon <span class="menu-price">Rs. 2,800</span></h3>
-                    <p>Served with lemon butter sauce and grilled vegetables.</p>
+                    <div>
+                        <h3>Grilled Salmon <span class="menu-price">Rs. 2,800</span></h3>
+                        <p>Served with lemon butter sauce and grilled vegetables.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="menu-card" data-key="caesar salad" data-name="caesar salad">
                 <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=500&q=80" alt="Salad">
                 <div class="menu-info">
-                    <h3>Caesar Salad <span class="menu-price">Rs. 1,200</span></h3>
-                    <p>Crisp romaine, croutons, parmesan, and Caesar dressing.</p>
+                    <div>
+                        <h3>Caesar Salad <span class="menu-price">Rs. 1,200</span></h3>
+                        <p>Crisp romaine, croutons, parmesan, and Caesar dressing.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="menu-card" data-key="sushi platter" data-name="sushi platter">
                 <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=500&q=80" alt="Sushi">
                 <div class="menu-info">
-                    <h3>Sushi Platter <span class="menu-price">Rs. 3,200</span></h3>
-                    <p>Assorted fresh sashimi, nigiri, and maki rolls.</p>
+                    <div>
+                        <h3>Sushi Platter <span class="menu-price">Rs. 3,200</span></h3>
+                        <p>Assorted fresh sashimi, nigiri, and maki rolls.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="menu-card" data-key="ribeye steak" data-name="ribeye steak">
                 <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=500&q=80" alt="Steak">
                 <div class="menu-info">
-                    <h3>Ribeye Steak <span class="menu-price">Rs. 4,200</span></h3>
-                    <p>Tender grilled steak served with garlic herb butter.</p>
+                    <div>
+                        <h3>Ribeye Steak <span class="menu-price">Rs. 4,200</span></h3>
+                        <p>Tender grilled steak served with garlic herb butter.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="menu-card" data-key="chocolate lava cake" data-name="chocolate lava cake">
                 <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80" alt="Dessert">
                 <div class="menu-info">
-                    <h3>Chocolate Lava Cake <span class="menu-price">Rs. 950</span></h3>
-                    <p>Warm chocolate cake with a molten center & ice cream.</p>
+                    <div>
+                        <h3>Chocolate Lava Cake <span class="menu-price">Rs. 950</span></h3>
+                        <p>Warm chocolate cake with a molten center & ice cream.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="menu-card" data-key="tiramisu" data-name="tiramisu dessert">
                 <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=500&q=80" alt="Tiramisu">
                 <div class="menu-info">
-                    <h3>Classic Tiramisu <span class="menu-price">Rs. 1,100</span></h3>
-                    <p>Coffee-flavoured Italian dessert with cocoa dusting.</p>
+                    <div>
+                        <h3>Classic Tiramisu <span class="menu-price">Rs. 1,100</span></h3>
+                        <p>Coffee-flavoured Italian dessert with cocoa dusting.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="menu-card" data-key="mojito" data-name="refreshing mojito drink">
                 <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=500&q=80" alt="Mojito">
                 <div class="menu-info">
-                    <h3>Fresh Mojito <span class="menu-price">Rs. 650</span></h3>
-                    <p>Mint, lime, soda water, and sugar over crushed ice.</p>
+                    <div>
+                        <h3>Fresh Mojito <span class="menu-price">Rs. 650</span></h3>
+                        <p>Mint, lime, soda water, and sugar over crushed ice.</p>
+                    </div>
+                    <span class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
         </div>
@@ -732,6 +784,7 @@
                 <div class="chef-info">
                     <h3>Chef Alex Marco</h3>
                     <p>Head Executive Chef</p>
+                    <span class="read-more-btn" style="justify-content: center;">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="chef-card" data-chef="maria santos">
@@ -739,6 +792,7 @@
                 <div class="chef-info">
                     <h3>Chef Maria Santos</h3>
                     <p>Pastry Specialist</p>
+                    <span class="read-more-btn" style="justify-content: center;">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="chef-card" data-chef="david chen">
@@ -746,6 +800,7 @@
                 <div class="chef-info">
                     <h3>Chef David Chen</h3>
                     <p>Sushi Master</p>
+                    <span class="read-more-btn" style="justify-content: center;">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="chef-card" data-chef="sarah jenkins">
@@ -753,6 +808,7 @@
                 <div class="chef-info">
                     <h3>Chef Sarah Jenkins</h3>
                     <p>Sous Chef</p>
+                    <span class="read-more-btn" style="justify-content: center;">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
         </div>
@@ -978,7 +1034,6 @@
         const modalClose = document.getElementById('modalClose');
         const modalBody = document.getElementById('modalBody');
 
-        // Detailed database for ratings, reviews, and experience
         const menuData = {
             "margherita pizza": {
                 title: "Margherita Pizza",
