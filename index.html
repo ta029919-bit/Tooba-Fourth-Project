@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savoria | Fine Dining Restaurant</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===================================
+           1. CSS VARIABLES & COZY AESTHETIC THEME
+           =================================== */
+        :root {
+            --bg-color: #faf6f0;
+            --text-color: #3b2f2f;
+            --card-bg: #fffefe;
+            --primary-color: #c86d4b;
+            --secondary-color: #7d6b52;
+            --shadow-color: rgba(60, 45, 35, 0.08);
+            --nav-bg: #faf6f0;
+            --border-color: #e8dfd5;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1c1816;
+            --text-color: #f2ece4;
+            --card-bg: #27221f;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --nav-bg: #1c1816;
+            --border-color: #3a322c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(200, 109, 75, 0.3);
+        }
+
+        /* ===================================
+           2. NAVBAR & HEADER
+           =================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* ===================================
+           3. HERO SECTION
+           =================================== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* ===================================
+           4. ABOUT SECTION
+           =================================== */
+        .about-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1 1 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px var(--shadow-color);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1 1 400px;
+        }
+
+        .about-text p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* ===================================
+           5. MENU SECTION
+           =================================== */
+        .menu-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .search-box {
+            padding: 10px 18px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-color);
+            width: 250px;
+            outline: none;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-info h3 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .menu-price {
+            color: var(--primary-color);
+        }
+
+        /* ===================================
+           6. CHEFS SECTION
+           =================================== */
+        .chefs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 30px;
+        }
+
+        .chef-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .chef-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .chef-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .chef-info {
+            padding: 20px;
+        }
+
+        /* ===================================
+           7. RESERVATION SECTION
+           =================================== */
+        .reservation-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            outline: none;
+        }
+
+        /* ===================================
+           8. GALLERY SECTION
+           =================================== */
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 220px;
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ===================================
+           9. REVIEWS SECTION
+           =================================== */
+        .reviews-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-slide {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .review-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .review-slide img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: var(--border-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--primary-color);
+        }
+
+        /* ===================================
+           10. CONTACT & FOOTER
+           =================================== */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info, .contact-map {
+            flex: 1 1 300px;
+        }
+
+        footer {
+            background: var(--card-bg);
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Scroll To Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            z-index: 99;
+        }
+
+        /* ===================================
+           11. MODAL POPUP STYLING
+           =================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .modal-rating {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #f39c12;
+        }
+
+        .modal-details {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .modal-reviews-list {
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        .modal-reviews-list h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .review-item {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            background: var(--bg-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--nav-bg);
+                flex-direction: column;
+                padding: 20px;
+                display: none;
+                box-shadow: 0 5px 10px var(--shadow-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header id="header">
+        <nav>
+            <a href="#home" class="logo">Savoria.</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#chefs">Chefs</a></li>
+                <li><a href="#reservation">Reservation</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <i class="fas fa-moon theme-toggle" id="themeToggle"></i>
+                <i class="fas fa-bars hamburger" id="hamburger"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME/HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Taste the Tradition & Passion</h1>
+            <p>Experience exquisite dining made with fresh, locally sourced ingredients.</p>
+            <a href="#reservation" class="btn">Book A Table</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-container">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Restaurant Ambiance">
+            </div>
+            <div class="about-text">
+                <h3>Crafting Delicious Moments Since 2010</h3>
+                <p>At Savoria, we believe that food is an art form. Our passion is delivering handcrafted culinary masterworks that delight both the eye and the palate. Join us for a unique dining experience surrounded by cozy interiors and friendly staff.</p>
+                <a href="#menu" class="btn">Explore Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section id="menu">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="menu-controls">
+            <input type="text" id="menuSearch" class="search-box" placeholder="Search menu items...">
+        </div>
+        <div class="menu-grid" id="menuGrid">
+            <!-- 10 Menu Items (Prices in PKR) -->
+            <div class="menu-card" data-key="margherita pizza" data-name="margherita pizza">
+                <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=500&q=80" alt="Pizza">
+                <div class="menu-info">
+                    <h3>Margherita Pizza <span class="menu-price">Rs. 1,600</span></h3>
+                    <p>Fresh tomatoes, mozzarella, basil, and olive oil.</p>
+                </div>
+            </div>
+            <div class="menu-card" data-key="gourmet burger" data-name="gourmet burger">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" alt="Burger">
+                <div class="menu-info">
+                    <h3>Gourmet Burger <span class="menu-price">Rs. 1,850</span></h3>
+                    <p>Juicy beef patty with cheddar, lettuce, and secret sauce.</p>
+                </div>
+            </div>
+            <div class="menu-card" data-key="pasta carbonara" data-name="creamy pasta carbonara">
+                <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=500&q=80" alt="Pasta">
+                <div class="menu-info">
+                    <h3>Pasta Carbonara <span class="menu-price">Rs. 1,700</span></h3>
+                    <p>Rich creamy sauce, parmesan, pancetta, and black pepper.</p>
+                </div>
+            </div>
+            <div class="menu-card" data-key="grilled salmon" data-name="grilled salmon text">
+                <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80" alt="Salmon">
+                <div class="menu-info">
+                    <h3>Grilled Salmon <span class="menu-price">Rs. 2,800</span></h3>
+                    <p>Served with lemon butter sauce and grilled vegetables.</p>
+                </div>
+            </div>
+            <div class="menu-card" data-key="caesar salad" data-name="caesar salad">
+                <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=500&q=80" alt="Salad">
+                <div class="menu-info">
+                    <h3>Caesar Salad <span class="menu-price">Rs. 1,200</span></h3>
+                    <p>Crisp romaine, croutons, parmesan, and Caesar dressing.</p>
+                </div>
+            </div>
+            <div class="menu-card" data-key="sushi platter" data-name="sushi platter">
+                <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=500&q=80" alt="Sushi">
+                <div class="menu-info">
+                    <h3>Sushi Platter <span class="menu-price">Rs. 3,200</span></h3>
+                    <p>Assorted fresh sashimi, nigiri, and maki rolls.</p>
+                </div>
+            </div>
+            <div class="menu-card" data-key="ribeye steak" data-name="ribeye steak">
+                <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=500&q=80" alt="Steak">
+                <div class="menu-info">
+                    <h3>Ribeye Steak <span class="menu-price">Rs. 4,200</span></h3>
+                    <p>Tender grilled steak served with garlic herb butter.</p>
+                </div>
+            </div>
+            <div class="menu-card" data-key="chocolate lava cake" data-name="chocolate lava cake">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80" alt="Dessert">
+                <div class="menu-info">
+                    <h3>Chocolate Lava Cake <span class="menu-price">Rs. 950</span></h3>
+                    <p>Warm chocolate cake with a molten center & ice cream.</p>
+                </div>
+            </div>
+            <div class="menu-card" data-key="tiramisu" data-name="tiramisu dessert">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=500&q=80" alt="Tiramisu">
+                <div class="menu-info">
+                    <h3>Classic Tiramisu <span class="menu-price">Rs. 1,100</span></h3>
+                    <p>Coffee-flavoured Italian dessert with cocoa dusting.</p>
+                </div>
+            </div>
+            <div class="menu-card" data-key="mojito" data-name="refreshing mojito drink">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=500&q=80" alt="Mojito">
+                <div class="menu-info">
+                    <h3>Fresh Mojito <span class="menu-price">Rs. 650</span></h3>
+                    <p>Mint, lime, soda water, and sugar over crushed ice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEFS SECTION -->
+    <section id="chefs">
+        <h2 class="section-title">Master Chefs</h2>
+        <div class="chefs-grid">
+            <!-- 4 Chefs -->
+            <div class="chef-card" data-chef="alex marco">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=400&q=80" alt="Chef">
+                <div class="chef-info">
+                    <h3>Chef Alex Marco</h3>
+                    <p>Head Executive Chef</p>
+                </div>
+            </div>
+            <div class="chef-card" data-chef="maria santos">
+                <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=400&q=80" alt="Chef">
+                <div class="chef-info">
+                    <h3>Chef Maria Santos</h3>
+                    <p>Pastry Specialist</p>
+                </div>
+            </div>
+            <div class="chef-card" data-chef="david chen">
+                <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?auto=format&fit=crop&w=400&q=80" alt="Chef">
+                <div class="chef-info">
+                    <h3>Chef David Chen</h3>
+                    <p>Sushi Master</p>
+                </div>
+            </div>
+            <div class="chef-card" data-chef="sarah jenkins">
+                <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=400&q=80" alt="Chef">
+                <div class="chef-info">
+                    <h3>Chef Sarah Jenkins</h3>
+                    <p>Sous Chef</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABLE RESERVATION -->
+    <section id="reservation">
+        <h2 class="section-title">Reserve A Table</h2>
+        <form class="reservation-form" id="resForm">
+            <div class="form-group">
+                <label for="resName">Full Name</label>
+                <input type="text" id="resName" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label for="resEmail">Email Address</label>
+                <input type="email" id="resEmail" required placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+                <label for="resGuests">Number of Guests</label>
+                <select id="resGuests" required>
+                    <option value="">Select Guests</option>
+                    <option value="1">1 Person</option>
+                    <option value="2">2 Persons</option>
+                    <option value="4">4 Persons</option>
+                    <option value="6">6+ Persons</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="resDate">Date</label>
+                <input type="date" id="resDate" required>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Book Now</button>
+        </form>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery">
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="gallery-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="food">Food</button>
+            <button class="filter-btn" data-filter="interior">Interior</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="food">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="Gallery">
+            </div>
+            <div class="gallery-item" data-category="interior">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="Gallery">
+            </div>
+            <div class="gallery-item" data-category="food">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=500&q=80" alt="Gallery">
+            </div>
+            <div class="gallery-item" data-category="interior">
+                <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=500&q=80" alt="Gallery">
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS -->
+    <section id="reviews">
+        <h2 class="section-title">Customer Reviews</h2>
+        <div class="reviews-container">
+            <div class="review-slide active">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="User">
+                <p>"The food was absolutely divine! The pasta carbonara is by far the best I have tasted in the city."</p>
+                <h4>- Emily Watson</h4>
+            </div>
+            <div class="review-slide">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="User">
+                <p>"Wonderful service and cozy ambience. Ideal place for a romantic dinner."</p>
+                <h4>- Michael Smith</h4>
+            </div>
+            <div class="slider-dots">
+                <span class="dot active" onclick="setSlide(0)"></span>
+                <span class="dot" onclick="setSlide(1)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Gourmet Street, Foodville</p>
+                <p><i class="fas fa-phone"></i> +92 300 1234567</p>
+                <p><i class="fas fa-envelope"></i> contact@savoria.com</p>
+            </div>
+            <div class="contact-map">
+                <iframe src="https://maps.google.com/maps?q=Lahore&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Savoria Restaurant. All Rights Reserved.</p>
+    </footer>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button class="scroll-top" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- POPUP MODAL -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- ===================================
+       12. JAVASCRIPT LOGIC
+       =================================== -->
+    <script>
+        // 1. HAMBURGER MENU TOGGLE
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // 2. DARK / LIGHT MODE SWITCHER
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                themeToggle.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeToggle.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // 3. MENU LIVE SEARCH
+        const menuSearch = document.getElementById('menuSearch');
+        const menuCards = document.querySelectorAll('.menu-card');
+
+        menuSearch.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            menuCards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                if (name.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // 4. GALLERY FILTER
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 5. REVIEW SLIDER LOGIC
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.review-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function setSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        setInterval(() => {
+            let nextSlide = (currentSlide + 1) % slides.length;
+            setSlide(nextSlide);
+        }, 5000);
+
+        // 6. RESERVATION FORM VALIDATION
+        const resForm = document.getElementById('resForm');
+        resForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Table Reservation Request Submitted Successfully!');
+            resForm.reset();
+        });
+
+        // 7. SCROLL-TO-TOP & STICKY NAVBAR LOGIC
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.display = 'flex';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 8. INTERACTIVE MODAL FOR MENU ITEMS & CHEFS
+        const modalOverlay = document.getElementById('detailModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalBody = document.getElementById('modalBody');
+
+        // Detailed database for ratings, reviews, and experience
+        const menuData = {
+            "margherita pizza": {
+                title: "Margherita Pizza",
+                rating: "4.8 / 5.0",
+                desc: "Fresh tomatoes, mozzarella, basil, and olive oil baked in a traditional wood-fired oven.",
+                reviews: [
+                    { user: "Ali Khan", comment: "The crust is perfectly crisp and cheesy!" },
+                    { user: "Fatima Noor", comment: "So fresh and authentic. Loved every bite." }
+                ]
+            },
+            "gourmet burger": {
+                title: "Gourmet Burger",
+                rating: "4.9 / 5.0",
+                desc: "Juicy prime beef patty with cheddar cheese, crisp lettuce, and signature secret sauce.",
+                reviews: [
+                    { user: "Usman Ali", comment: "Juiciest burger in town hands down." },
+                    { user: "Ayesha Malik", comment: "The secret sauce makes it unforgettable!" }
+                ]
+            },
+            "pasta carbonara": {
+                title: "Pasta Carbonara",
+                rating: "4.8 / 5.0",
+                desc: "Rich creamy sauce, parmesan cheese, savory pancetta, and freshly ground black pepper.",
+                reviews: [
+                    { user: "Zainab Tariq", comment: "Creamy perfection without being too heavy." },
+                    { user: "Hassan Raza", comment: "Reminded me of my trip to Rome!" }
+                ]
+            },
+            "grilled salmon": {
+                title: "Grilled Salmon",
+                rating: "4.9 / 5.0",
+                desc: "Fresh Atlantic salmon served with lemon butter sauce and seasonal grilled vegetables.",
+                reviews: [
+                    { user: "Sadia Ahmed", comment: "Cooked to absolute perfection. So tender." }
+                ]
+            },
+            "caesar salad": {
+                title: "Caesar Salad",
+                rating: "4.6 / 5.0",
+                desc: "Crisp romaine lettuce, crunchy croutons, parmesan flakes, and creamy Caesar dressing.",
+                reviews: [
+                    { user: "Bilal Ahmed", comment: "Very refreshing and crisp." }
+                ]
+            },
+            "sushi platter": {
+                title: "Sushi Platter",
+                rating: "4.9 / 5.0",
+                desc: "Assorted fresh sashimi, nigiri, and maki rolls prepared by our expert sushi master.",
+                reviews: [
+                    { user: "Daniyal Sheikh", comment: "Extremely fresh seafood and great presentation." }
+                ]
+            },
+            "ribeye steak": {
+                title: "Ribeye Steak",
+                rating: "5.0 / 5.0",
+                desc: "Tender, premium grilled steak served with aromatic garlic herb butter and sides.",
+                reviews: [
+                    { user: "Shehryar Khan", comment: "Melts right in your mouth. Worth every rupee!" }
+                ]
+            },
+            "chocolate lava cake": {
+                title: "Chocolate Lava Cake",
+                rating: "4.9 / 5.0",
+                desc: "Warm decadent chocolate cake with a rich molten center paired with vanilla ice cream.",
+                reviews: [
+                    { user: "Maham Riaz", comment: "Absolute heaven for chocolate lovers!" }
+                ]
+            },
+            "tiramisu": {
+                title: "Classic Tiramisu",
+                rating: "4.8 / 5.0",
+                desc: "Traditional coffee-flavoured Italian dessert layered with mascarpone and cocoa dusting.",
+                reviews: [
+                    { user: "Ahsan Iqbal", comment: "Rich coffee flavor and super fluffy texture." }
+                ]
+            },
+            "mojito": {
+                title: "Fresh Mojito",
+                rating: "4.7 / 5.0",
+                desc: "Refreshing mint leaves, fresh lime, soda water, and sugar served over crushed ice.",
+                reviews: [
+                    { user: "Sohaib Akram", comment: "Super refreshing on a warm evening." }
+                ]
+            }
+        };
+
+        const chefData = {
+            "alex marco": {
+                name: "Chef Alex Marco",
+                role: "Head Executive Chef",
+                experience: "15 Years Experience",
+                rating: "4.9 / 5.0 (Master Chef)",
+                bio: "Trained in prestigious kitchens across Paris and Milan, Chef Alex brings world-class culinary finesse and innovative techniques to Savoria."
+            },
+            "maria santos": {
+                name: "Chef Maria Santos",
+                role: "Pastry Specialist",
+                experience: "10 Years Experience",
+                rating: "4.8 / 5.0 (Master Chef)",
+                bio: "A virtuoso in confectionery and baking arts, Chef Maria crafts our signature molten lava cakes and exquisite desserts."
+            },
+            "david chen": {
+                name: "Chef David Chen",
+                role: "Sushi Master",
+                experience: "12 Years Experience",
+                rating: "4.9 / 5.0 (Master Chef)",
+                bio: "Specializing in authentic Japanese cuisine and precision knife work, Chef David ensures every sushi roll is an aesthetic masterpiece."
+            },
+            "sarah jenkins": {
+                name: "Chef Sarah Jenkins",
+                role: "Sous Chef",
+                experience: "8 Years Experience",
+                rating: "4.7 / 5.0 (Master Chef)",
+                bio: "An expert in flavor profiling and kitchen coordination, Chef Sarah keeps every service running smoothly with uncompromised quality."
+            }
+        };
+
+        // Click event on menu cards
+        menuCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const key = card.getAttribute('data-key');
+                const item = menuData[key];
+                if (item) {
+                    let reviewsHTML = item.reviews.map(r => `<div class="review-item"><strong>${r.user}:</strong> "${r.comment}"</div>`).join('');
+                    modalBody.innerHTML = `
+                        <h3>${item.title}</h3>
+                        <div class="modal-rating"><i class="fas fa-star"></i> Rating: ${item.rating}</div>
+                        <p class="modal-details">${item.desc}</p>
+                        <div class="modal-reviews-list">
+                            <h4>Customer Reviews:</h4>
+                            ${reviewsHTML}
+                        </div>
+                    `;
+                    modalOverlay.classList.add('active');
+                }
+            });
+        });
+
+        // Click event on chef cards
+        document.querySelectorAll('.chef-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const chefKey = card.getAttribute('data-chef');
+                const chef = chefData[chefKey];
+                if (chef) {
+                    modalBody.innerHTML = `
+                        <h3>${chef.name}</h3>
+                        <p style="font-weight: 600; margin-bottom: 8px; color: var(--secondary-color);">${chef.role}</p>
+                        <div class="modal-rating"><i class="fas fa-award"></i> ${chef.experience}</div>
+                        <div class="modal-rating"><i class="fas fa-star"></i> ${chef.rating}</div>
+                        <p class="modal-details" style="margin-top: 10px;">${chef.bio}</p>
+                    `;
+                    modalOverlay.classList.add('active');
+                }
+            });
+        });
+
+        // Close Modal
+        modalClose.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+        });
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
